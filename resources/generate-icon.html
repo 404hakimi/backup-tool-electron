@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>生成应用图标</title>
+</head>
+<body>
+    <canvas id="canvas" width="512" height="512"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // 背景渐变
+        const gradient = ctx.createLinearGradient(0, 0, 512, 512);
+        gradient.addColorStop(0, '#18a058');
+        gradient.addColorStop(1, '#0c7a43');
+        
+        // 绘制圆角矩形背景
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.roundRect(0, 0, 512, 512, 80);
+        ctx.fill();
+        
+        // 绘制云朵图标
+        ctx.fillStyle = '#ffffff';
+        
+        // 云朵主体
+        ctx.beginPath();
+        ctx.ellipse(256, 256, 160, 120, 0, 0, 2 * Math.PI);
+        ctx.fill();
+        
+        // 云朵左侧圆
+        ctx.beginPath();
+        ctx.arc(180, 240, 80, 0, 2 * Math.PI);
+        ctx.fill();
+        
+        // 云朵右侧圆
+        ctx.beginPath();
+        ctx.arc(332, 240, 80, 0, 2 * Math.PI);
+        ctx.fill();
+        
+        // 绘制向上箭头
+        ctx.fillStyle = '#18a058';
+        ctx.beginPath();
+        ctx.moveTo(256, 200);
+        ctx.lineTo(200, 280);
+        ctx.lineTo(232, 280);
+        ctx.lineTo(232, 340);
+        ctx.lineTo(280, 340);
+        ctx.lineTo(280, 280);
+        ctx.lineTo(312, 280);
+        ctx.closePath();
+        ctx.fill();
+        
+        // 输出提示
+        console.log('图标已生成，请右键保存canvas内容为PNG文件');
+    </script>
+</body>
+</html>
